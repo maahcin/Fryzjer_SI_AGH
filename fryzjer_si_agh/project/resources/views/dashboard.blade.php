@@ -45,7 +45,7 @@
     </div>
 
     @switch(App\Models\User::where('id',Auth::id())->value('type'))
-        @case(1)
+        @case(3)
             <div class="py-12" style="padding: 10px">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-10">
 
@@ -62,7 +62,7 @@
                 </div>
             </div>
         @break
-        @case(2)
+        @case(4)
             <div class="py-12" style="padding: 10px">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-10">
 
@@ -94,7 +94,7 @@
                 </div>
             </div>
         @break
-        @case(3)
+        @case(1)
             <div class="py-12" style="padding: 10px">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-10">
 
