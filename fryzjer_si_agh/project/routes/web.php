@@ -55,3 +55,8 @@ Route::get('requests/create', [\App\Http\Controllers\RepairRequestController::cl
 Route::resource('/employees', \App\Http\Controllers\EmployeeController::class)->middleware(['auth']);
 Route::get('employees/{id}', [\App\Http\Controllers\EmployeeController::class, 'show'])->name('employees.show');
 Route::get('employees/create', [\App\Http\Controllers\EmployeeController::class, 'create'])->name('employees.create');
+
+Route::get('/delivery', [\App\Http\Controllers\DeliveryController::class, 'show'])->name('delivery.show');
+Route::get('/delivery/create', [\App\Http\Controllers\DeliveryController::class, 'create_products'])->name('delivery.create_products');
+Route::post('/delivery/show', [\App\Http\Controllers\DeliveryController::class, 'store'])->name('delivery.store');
+Route::get('/delivery/{id}', [\App\Http\Controllers\DeliveryController::class, 'show2'])->name('delivery.show2');
