@@ -23,10 +23,9 @@ class DeliveryController extends Controller
     public function store(Request $request): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
         $idd=DB::select(DB::raw("SELECT id FROM deliveries ORDER BY id DESC LIMIT 1"));
-        var_dump($idd);
-        if(!empty($idd)){
+        if (!empty($idd)) {
             $lastId = (int)$idd[0]->id;
-        }else{
+        } else {
             $lastId = 0;
         }
 
@@ -40,6 +39,13 @@ class DeliveryController extends Controller
                     "id_product"=>$product->id,
                     'quantity'=>$ile);
                 DB::table('delivery__products')->insert($data);
+                $data=array(
+                    'product_id'=>$product->id,
+                    'users_id'=>5,
+                    'quantity'=>$ile,
+                    'type'=>1,
+                    'created_at'=>date("Y-m-d H:i:s"));
+                DB::table('inventories')->insert($data);
                 $suma=$suma+$ile*$product->cost;
             }
         }
@@ -80,5 +86,4 @@ class DeliveryController extends Controller
         "));
         return view('delivery.show')->with('deliveries', $deliveries);
     }
-
 }
