@@ -63,3 +63,6 @@ Route::get('/delivery', [\App\Http\Controllers\DeliveryController::class, 'show'
 Route::get('/delivery/create', [\App\Http\Controllers\DeliveryController::class, 'create_products'])->name('delivery.create_products');
 Route::post('/delivery/show', [\App\Http\Controllers\DeliveryController::class, 'store'])->name('delivery.store');
 Route::get('/delivery/{id}', [\App\Http\Controllers\DeliveryController::class, 'show2'])->name('delivery.show2');
+
+Route::get('delraport', [\App\Http\Controllers\DeliveryController::class, 'raport'])->name('delivery.raport'); //pz
+Route::get('delraport/{id}', [\App\Http\Controllers\DeliveryController::class, 'raports'])->name('delivery.raports');  //pz

@@ -52,12 +52,11 @@
                 <div class="flex justify-center">
                         <h1 class="big-headline" style="color: darkblue">xxx</h1>
                 </div>
-<!--
+                {{--
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-6">
                             <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>                              <div class="ml-4 text-lg leading-7 font-semibold" style="font-size: 1.5em"><a href="{{route('requests.index')}}" class="underline text-gray-900 dark:text-white">Create a request</a></div>
                             </div>
 
                             <div class="ml-12">
@@ -123,16 +122,17 @@
                 </div>
 
             </div>
-            -->
-            <div class="bottomcorner">
-                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                    <h2 style="display: flex; justify-content: center">Contact</h2>
-                </div>
-                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm" style="display: flex; justify-content: center">
-                    Telephone: xxx
-                </div>
-                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                    E-mail: xxx
+            --}}
+                <div class="bottomcorner">
+                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                        <h2 style="display: flex; justify-content: center">Contact</h2>
+                    </div>
+                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm" style="display: flex; justify-content: center">
+                        Telephone: xxx
+                    </div>
+                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                        E-mail: xxx
+                    </div>
                 </div>
             </div>
         </div>
