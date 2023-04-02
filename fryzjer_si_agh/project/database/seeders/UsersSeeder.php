@@ -47,6 +47,5 @@ class UsersSeeder extends Seeder
             'type' => 5,
             'phone' => '999123999',
         ]);
-
     }
 }
