@@ -50,6 +50,11 @@
                                     {{ __('Delivery') }}
                                 </x-nav-link>
                             </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <x-nav-link :href="route('inventory.index')" :active="request()->routeIs('inventory.index')">
+                                    {{ __('Inventory') }}
+                                </x-nav-link>
+                            </div>
                     @break
                     @case(2)
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -87,6 +92,11 @@
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <x-nav-link :href="route('delivery.show')" :active="request()->routeIs('delivery.show')">
                                     {{ __('Delivery') }}
+                                </x-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <x-nav-link :href="route('inventory.index')" :active="request()->routeIs('inventory.index')">
+                                    {{ __('Inventory') }}
                                 </x-nav-link>
                             </div>
                     @break

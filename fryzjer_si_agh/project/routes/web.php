@@ -39,6 +39,8 @@ Route::get('prices', function () {
 })->name('prices');
 
 
+Route::resource('/inventory', \App\Http\Controllers\InventoryController::class)->middleware(['auth']);
+/*
 Route::get('requests/{request}/accept_request', [\App\Http\Controllers\RepairRequestController::class, 'accept_request'])->name('requests.accept_request');
 Route::get('requests/{request}/accept', [\App\Http\Controllers\RepairRequestController::class, 'accept'])->name('requests.accept');
 Route::get('requests/{request}/respond', [\App\Http\Controllers\RepairRequestController::class, 'respond'])->name('requests.respond');
@@ -51,6 +53,7 @@ Route::get('orders/calendar', [\App\Http\Controllers\OrderController::class, 'ca
 Route::resource('/orders', \App\Http\Controllers\OrderController::class)->middleware(['auth']);
 
 Route::get('requests/create', [\App\Http\Controllers\RepairRequestController::class, 'create'])->name('requests.create');
+*/
 
 Route::resource('/employees', \App\Http\Controllers\EmployeeController::class)->middleware(['auth']);
 Route::get('employees/{id}', [\App\Http\Controllers\EmployeeController::class, 'show'])->name('employees.show');
