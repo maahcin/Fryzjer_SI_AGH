@@ -22,9 +22,10 @@ class EmployeeController extends Controller
 
     public function index(): View | RedirectResponse
     {
+        /*
         if (!$this->check_admin()) {
             return redirect()->route('welcome');
-        }
+        }*/
         $users = User::orderBy('id', 'desc')->get();
         return view('employees.index')->with('users', $users);
     }
@@ -58,7 +59,7 @@ class EmployeeController extends Controller
             $password =  substr($user->name, 0, 2).
                 substr($user->phone, 0, 4).substr($user->name, -2);
         } else {
-            $password = 'pleasechangemeasap';
+            $password = 'secret';
         }
         $user->password = Hash::make($password);
         $user->save();
@@ -85,9 +86,9 @@ class EmployeeController extends Controller
     {
         $userID = Auth::id();
         $userType = User::where('ID', $userID)->value('type');
-        if ($userType != 1) {
-            return false;
+        if ($userType == 1 || $userType == 4) {
+            return true;
         }
-        return true;
+        return false;
     }
 }

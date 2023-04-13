@@ -60,13 +60,21 @@
                     </tbody>
                 </table>
                 @endif
-                    <div class="flex items-center justify-end mt-4 px-4 pb-5">
-                        <form method="get" action="{{ route('employees.create') }}">
-                            <x-primary-button class="ml-4 mb-4">
-                                {{ __('Add new employee') }}
-                            </x-primary-button>
-                        </form>
-                    </div>
+                    @if(Auth::id())
+                        @switch(App\Models\User::where('id',Auth::id())->value('type'))
+                            @case(1)
+                                <div class="flex items-center justify-end mt-4 px-4 pb-5">
+                                    <form method="get" action="{{ route('employees.create') }}">
+                                        <x-primary-button class="ml-4 mb-4">
+                                            {{ __('Add new employee') }}
+                                        </x-primary-button>
+                                    </form>
+                                </div>
+                                @break
+                            @case(4)
+                                @break
+                        @endswitch
+                    @endif
             </div>
         </div>
     </div>

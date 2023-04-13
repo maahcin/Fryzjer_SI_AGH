@@ -19,29 +19,20 @@
                 @if(Auth::id())
                 @switch(App\Models\User::where('id',Auth::id())->value('type'))
                     @case(1)
-                        {{--
-                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <x-nav-link :href="route('requests.index')" :active="request()->routeIs('dashboard')">
-                                {{ __('Requests') }}
-                            </x-nav-link>
-                        </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
-                                    {{ __('Orders') }}
-                                </x-nav-link>
-                            </div> --}}
+
+
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: auto; margin-bottom: auto">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-calendar-week" viewBox="0 0 16 16">
                                     <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
                                     <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
                                 </svg>
                             </div>
-                        {{--
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-left: 10px">
-                                <x-nav-link :href="route('orders.calendar')" :active="request()->routeIs('dashboard')">
-                                    {{ __('Calendar') }}
+
+                              <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-left: 10px">
+                                <x-nav-link {{--:href="route('orders.calendar')" :active="request()->routeIs('dashboard')"--}}>
+                                {{ __('Calendar') }}
                                 </x-nav-link>
-                            </div> --}}
+                            </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-left: 10px">
                                 <x-nav-link :href="route('employees.index')" :active="request()->routeIs('dashboard')">
                                     {{ __('Employees') }}
@@ -66,12 +57,12 @@
                     @case(2)
                         {{--
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <x-nav-link :href="route('requests.index')" :active="request()->routeIs('dashboard')">
+                            <x-nav-link {{--:href="route('requests.index')" :active="request()->routeIs('dashboard')">
                                 {{ __('Requests') }}
                             </x-nav-link>
                         </div>
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
+                            <x-nav-link {{--:href="route('orders.index')" :active="request()->routeIs('orders.index')">
                                 {{ __('Orders') }}
                             </x-nav-link>
                         </div> --}}
@@ -81,23 +72,40 @@
                                 <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
                             </svg>
                         </div>
-                        {{--
+
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-left: 10px">
-                            <x-nav-link :href="route('orders.calendar')" :active="request()->routeIs('dashboard')">
+                            <x-nav-link {{--:href="route('orders.calendar')" :active="request()->routeIs('dashboard')"--}}>
                                 {{ __('Calendar') }}
                             </x-nav-link>
-                        </div> --}}
+                        </div>
                     @break
                     @case(3)
-                        {{--
-                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <x-nav-link :href="route('requests.index')" :active="request()->routeIs('dashboard')">
-                                {{ __('Requests & Orders') }}
-                            </x-nav-link>
-                        </div>
-                        --}}
+
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <x-nav-link :href="route('inventory.index')" :active="request()->routeIs('inventory.index')">
+                                    {{ __('Inventory') }}
+                                </x-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <x-nav-link :href="route('product.show')" :active="request()->routeIs('products.index')">
+                                    {{ __('Products') }}
+                                </x-nav-link>
+                            </div>
                     @break
                     @case(4)
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-left: 10px">
+                            <x-nav-link {{--:href="route('orders.calendar')" :active="request()->routeIs('dashboard')"--}}>
+                                {{ __('Calendar') }}
+                            </x-nav-link>
+                        </div>
+                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-left: 10px">
+                                <x-nav-link :href="route('employees.index')" :active="request()->routeIs('dashboard')">
+                                    {{ __('Employees') }}
+                                </x-nav-link>
+                            </div>
+
+
+
                     @break
                     @case(5)
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
