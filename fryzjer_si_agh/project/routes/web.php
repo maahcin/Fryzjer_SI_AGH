@@ -68,5 +68,4 @@ Route::get('/products', [\App\Http\Controllers\ProductController::class, 'show']
 Route::get('/products/create', [\App\Http\Controllers\ProductController::class, 'create_products'])->name('product.create_products');
 Route::post('/product/show', [\App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
 
-Route::get('delraport', [\App\Http\Controllers\DeliveryController::class, 'raport'])->name('delivery.raport'); //pz
-Route::get('delraport/{id}', [\App\Http\Controllers\DeliveryController::class, 'raports'])->name('delivery.raports');  //pz
+Route::get('/delraport', [\App\Http\Controllers\DeliveryController::class, 'raport'])->name('delivery.raport'); //pz

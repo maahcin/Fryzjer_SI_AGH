@@ -86,4 +86,14 @@ class DeliveryController extends Controller
         "));
         return view('delivery.show')->with('deliveries', $deliveries);
     }
+
+    public function raport(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    {
+        $del = Delivery::all();
+        $delpr = array(4, 5);
+            /*DB::select(DB::raw("
+                SELECT * FROM delivery__products
+        "));*/
+        return view('delivery.raport')->with('del', $del)->with('delpr', $delpr);
+    }
 }
