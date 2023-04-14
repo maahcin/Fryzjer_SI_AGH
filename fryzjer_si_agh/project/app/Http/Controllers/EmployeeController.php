@@ -55,6 +55,7 @@ class EmployeeController extends Controller
         $user->email = $this->ensureIsString($request->email);
         $user->phone = $this->ensureIsString($request->phone);
         $user->type = 2;
+        $user->speciality = $this->ensureIsString($request->speciality);
         if ($user-> name && $user->phone && strlen($user->name) > 3) {
             $password =  substr($user->name, 0, 2).
                 substr($user->phone, 0, 4).substr($user->name, -2);
@@ -73,7 +74,8 @@ class EmployeeController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
-            'phone' => 'required'
+            'phone' => 'required',
+            'speciality' => 'required',
         ]);
 
         $user = new User();

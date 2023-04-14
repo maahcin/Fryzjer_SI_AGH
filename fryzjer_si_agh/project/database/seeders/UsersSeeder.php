@@ -18,6 +18,8 @@ class UsersSeeder extends Seeder
             'password' => bcrypt('secret'),
             'type' => 1,
             'phone' => '987654321',
+            'speciality' => 'none',
+
         ]);
         DB::table('users')->insert([   // FRYZJER
             'name' => 'hairdresser1',
@@ -25,6 +27,8 @@ class UsersSeeder extends Seeder
             'password' => bcrypt('secret'),
             'type' => 2,
             'phone' => '123456789',
+            'speciality' => 'Strzyzenie męskie + broda, Koloryzacja',
+
         ]);
         DB::table('users')->insert([  //KSIĘGOWA
             'name' => 'accountant',
@@ -32,6 +36,8 @@ class UsersSeeder extends Seeder
             'password' => bcrypt('secret'),
             'type' => 3,
             'phone' => '123123123',
+            'speciality' => 'none',
+
         ]);
         DB::table('users')->insert([  //RECEPCJONISTKA
             'name' => 'receptionist',
@@ -39,6 +45,8 @@ class UsersSeeder extends Seeder
             'password' => bcrypt('secret'),
             'type' => 4,
             'phone' => '321321321',
+            'speciality' => 'none',
+
         ]);
         DB::table('users')->insert([  //MAGAZYNIER
             'name' => 'storeman1',
@@ -46,6 +54,8 @@ class UsersSeeder extends Seeder
             'password' => bcrypt('secret'),
             'type' => 5,
             'phone' => '999123999',
+            'speciality' => 'none',
+
         ]);
     }
 }

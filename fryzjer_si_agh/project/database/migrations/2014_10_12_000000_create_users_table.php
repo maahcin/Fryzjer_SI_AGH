@@ -20,6 +20,7 @@ return new class () extends Migration {
             $table->string('password');
             $table->integer('type')->default(1);
             $table->string('phone')->nullable();
+            $table->string('speciality')->default('none');  //usługi wykonywane przez fryzjera
             $table->rememberToken();
             $table->timestamps();
         });
