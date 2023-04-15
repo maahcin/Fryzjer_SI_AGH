@@ -20,10 +20,10 @@
                                                 <td>Price: {{$d->sum}}</td><br>
                                                 <td>Products:
                                                     @foreach($delpr as $p)
-                                                        {{-- @if($d->id == $p->id_delivery)
-                                                            {{$p->id_delivery}} , {{$p->quantity}}
-                                                        @endif  DO POPR --}}
-                                                        {{ $p }},
+                                                        {{-- print_r($p) --}}
+                                                        @if($d->id == $p->id_delivery)
+                                                            {{$p->name}},  amount: {{$p->quantity}} <br>
+                                                        @endif
                                                     @endforeach</td><br>
                                             </tr>
                                         </div>

@@ -90,10 +90,10 @@ class DeliveryController extends Controller
     public function raport(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $del = Delivery::all();
-        $delpr = array(4, 5);
-            /*DB::select(DB::raw("
-                SELECT * FROM delivery__products
-        "));*/
+        $delpr = DB::select(DB::raw("
+                SELECT * FROM delivery__products AS dp
+                LEFT JOIN products AS p ON dp.id_product = p.id
+        "));
         return view('delivery.raport')->with('del', $del)->with('delpr', $delpr);
     }
 }
