@@ -18,12 +18,17 @@ class DeliverySeeder extends Seeder
     {
         DB::table('deliveries')->insert([
             'date' => new DateTime('2016/01/01'),
-            'sum' => 120.00
+            'sum' => 140.00
         ]);
         DB::table('delivery__products')->insert([
             'id_delivery' => '1',
             'id_product' => '3',
             'quantity' => 6,
+        ]);
+        DB::table('delivery__products')->insert([
+            'id_delivery' => '1',
+            'id_product' => '2',
+            'quantity' => 1,
         ]);
     }
 }
