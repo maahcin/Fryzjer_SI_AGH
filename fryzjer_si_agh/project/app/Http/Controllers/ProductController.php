@@ -44,4 +44,28 @@ class ProductController extends Controller
         $products=Product::all();
         return view('products.index')->with('products', $products);
     }
+
+    public function cost(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    {
+        $sdate = $request->input('sdate');
+        $edate=$request->input('edate');
+        $request->request->remove('sdate');
+        $request->request->remove('edate');
+        if (empty($sdate)) {
+            $date=DB::select(DB::raw("SELECT date FROM deliveries ORDER BY date ASC LIMIT 1"));
+            $sdate = $date[0]->date;
+        }
+        if (empty($edate)) {
+            $date=DB::select(DB::raw("SELECT date FROM deliveries ORDER BY date DESC LIMIT 1"));
+            $edate = $date[0]->date;
+        }
+
+        $sum=DB::select(DB::raw("SELECT sum FROM deliveries WHERE date BETWEEN '$sdate' AND '$edate'"));
+        $s=0;
+
+        foreach ($sum as $ss) {
+            $s=$s+(int)$ss->sum;
+        }
+        return view('products.cost')->with('sum', $s)->with('sdate', $sdate)->with('edate', $edate);
+    }
 }
