@@ -6,6 +6,17 @@
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr)">
+            @foreach($inventory as $i)
+                @if($i->sum < 5)
+                    <div style="background-color: #ff4a52; margin: 10px; padding: 10px; border-radius: 10px; width: 90%;">
+                        <strong>ALERT!</strong> <br />
+                        Mała ilość produktu: {{ $i->name }} <br />
+                        Aktualna ilość: {{$i->sum}} <br/>
+                    </div>
+                @endif
+            @endforeach
+            </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
                 <table class="min-w-full divide-y divide-gray-200 mt-4">
