@@ -19,6 +19,7 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
 //use Barryvdh\DomPDF\PDF;
 use Barryvdh\DomPDF\Facade\Pdf;
+
 class ProductController extends Controller
 {
     public function store(Request $request): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
@@ -71,12 +72,33 @@ class ProductController extends Controller
                 }
                 return view('products.cost')->with('sum', $s)->with('sdate', $sdate)->with('edate', $edate);
             case 'report':
-                $data = Delivery::all();
-                // share data to view
-                view()->share('delivery', $data);
-                $pdf = Pdf::loadView('products.report', ['data' => $data]);
+                $sdate = $request->input('sdate');
+                $edate = $request->input('edate');
+                $request->request->remove('sdate');
+                $request->request->remove('edate');
+                if (empty($sdate)) {
+                    $date = DB::select(DB::raw("SELECT date FROM deliveries ORDER BY date ASC LIMIT 1"));
+                    $sdate = $date[0]->date;
+                }
+                if (empty($edate)) {
+                    $date = DB::select(DB::raw("SELECT date FROM deliveries ORDER BY date DESC LIMIT 1"));
+                    $edate = $date[0]->date;
+                }
+
+                $sum = DB::select(DB::raw("SELECT sum FROM deliveries WHERE date BETWEEN '$sdate' AND '$edate'"));
+                $s = 0;
+
+                $items = array();
+                foreach ($sum as $ss) {
+                    $s = $s + (int)$ss->sum;
+                    $items[] = (int)$ss->sum;
+                }
+                $string=implode(",", $items);
+                $now = date("Y-m-d");
+                $now2 = date("Y-m-d h:i:sa");
+                $pdf = Pdf::loadView('products.report', ['s' => $s,'sdate'=>$sdate,'edate'=>$edate,'now2'=>$now2,'now'=>$now,'string'=>$string]);
                 // download PDF file with download method
-                return $pdf->download('pdf_file.pdf');
+                return $pdf->download('Raport_'.$now . '.pdf');
                 break;
         }
         return view('products.cost');

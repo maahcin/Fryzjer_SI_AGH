@@ -31,7 +31,7 @@
                             <x-primary-button name="action" value="cal" class="ml-4">
                                 {{ __('Calculate') }}
                             </x-primary-button>
-                            <x-primary-button name="action"  value="report" class="ml-4">
+                            <x-primary-button name="action"  title="Report will be generated a few minutes after clicking" value="report" class="ml-4">
                                 {{ __('Generate Report') }}
                             </x-primary-button>
                         </div>
