@@ -28,10 +28,14 @@
 
                         <div class="flex items-center justify-end mt-4">
 
-                            <x-primary-button class="ml-4">
+                            <x-primary-button name="action" value="cal" class="ml-4">
                                 {{ __('Calculate') }}
                             </x-primary-button>
+                            <x-primary-button name="action"  value="report" class="ml-4">
+                                {{ __('Generate Report') }}
+                            </x-primary-button>
                         </div>
+
                         @if(!empty($sum))
                         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                             <div class="px-4 py-5 sm:px-6 mt-4 mb-4">

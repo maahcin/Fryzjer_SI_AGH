@@ -70,3 +70,5 @@ Route::post('/product/show', [\App\Http\Controllers\ProductController::class, 's
 Route::get('/products/cost', [\App\Http\Controllers\ProductController::class, 'cost'])->name('product.cost');
 
 Route::get('/delraport', [\App\Http\Controllers\DeliveryController::class, 'raport'])->name('delivery.raport'); //pz
+Route::get('/products/pdf', [\App\Http\Controllers\ProductController::class, 'cost']);
+

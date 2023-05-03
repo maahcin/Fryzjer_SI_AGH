@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
-
+//use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 class ProductController extends Controller
 {
     public function store(Request $request): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
@@ -45,27 +46,39 @@ class ProductController extends Controller
         return view('products.index')->with('products', $products);
     }
 
-    public function cost(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function cost(Request $request)
     {
-        $sdate = $request->input('sdate');
-        $edate=$request->input('edate');
-        $request->request->remove('sdate');
-        $request->request->remove('edate');
-        if (empty($sdate)) {
-            $date=DB::select(DB::raw("SELECT date FROM deliveries ORDER BY date ASC LIMIT 1"));
-            $sdate = $date[0]->date;
-        }
-        if (empty($edate)) {
-            $date=DB::select(DB::raw("SELECT date FROM deliveries ORDER BY date DESC LIMIT 1"));
-            $edate = $date[0]->date;
-        }
+        switch ($request->input('action')) {
+            case 'cal':
+                $sdate = $request->input('sdate');
+                $edate = $request->input('edate');
+                $request->request->remove('sdate');
+                $request->request->remove('edate');
+                if (empty($sdate)) {
+                    $date = DB::select(DB::raw("SELECT date FROM deliveries ORDER BY date ASC LIMIT 1"));
+                    $sdate = $date[0]->date;
+                }
+                if (empty($edate)) {
+                    $date = DB::select(DB::raw("SELECT date FROM deliveries ORDER BY date DESC LIMIT 1"));
+                    $edate = $date[0]->date;
+                }
 
-        $sum=DB::select(DB::raw("SELECT sum FROM deliveries WHERE date BETWEEN '$sdate' AND '$edate'"));
-        $s=0;
+                $sum = DB::select(DB::raw("SELECT sum FROM deliveries WHERE date BETWEEN '$sdate' AND '$edate'"));
+                $s = 0;
 
-        foreach ($sum as $ss) {
-            $s=$s+(int)$ss->sum;
+                foreach ($sum as $ss) {
+                    $s = $s + (int)$ss->sum;
+                }
+                return view('products.cost')->with('sum', $s)->with('sdate', $sdate)->with('edate', $edate);
+            case 'report':
+                $data = Delivery::all();
+                // share data to view
+                view()->share('delivery', $data);
+                $pdf = Pdf::loadView('products.report', ['data' => $data]);
+                // download PDF file with download method
+                return $pdf->download('pdf_file.pdf');
+                break;
         }
-        return view('products.cost')->with('sum', $s)->with('sdate', $sdate)->with('edate', $edate);
+        return view('products.cost');
     }
 }
