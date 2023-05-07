@@ -30,5 +30,17 @@ class DeliverySeeder extends Seeder
             'id_product' => '2',
             'quantity' => 1,
         ]);
+        DB::table('inventories')->insert([
+            'product_id' => '3',
+            'users_id' => 5,
+            'quantity' => 6,
+            'type' => 1
+        ]);
+        DB::table('inventories')->insert([
+            'product_id' => '2',
+            'users_id' => 5,
+            'quantity' => 1,
+            'type' => 1
+        ]);
     }
 }

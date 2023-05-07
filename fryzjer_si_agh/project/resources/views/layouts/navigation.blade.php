@@ -83,7 +83,11 @@
                                 {{ __('Calendar') }}
                             </x-nav-link>
                         </div>
-
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-left: 10px">
+                                <x-nav-link :href="route('visits.index')" :active="request()->routeIs('dashboard')">
+                                    {{ __('My visits') }}
+                                </x-nav-link>
+                            </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-left: 10px">
                                 <x-nav-link :href="route('services.index')" :active="request()->routeIs('dashboard')">
                                     {{ __('My services') }}

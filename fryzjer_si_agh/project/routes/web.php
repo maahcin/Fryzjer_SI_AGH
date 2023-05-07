@@ -73,3 +73,4 @@ Route::get('/delraport', [\App\Http\Controllers\DeliveryController::class, 'rapo
 Route::get('/products/pdf', [\App\Http\Controllers\ProductController::class, 'cost']);
 
 Route::resource('/services', \App\Http\Controllers\ServiceController::class)->middleware(['auth']);
+Route::resource('/visits', \App\Http\Controllers\VisitController::class)->middleware(['auth']);

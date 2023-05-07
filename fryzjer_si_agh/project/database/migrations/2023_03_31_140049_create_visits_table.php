@@ -20,6 +20,7 @@ return new class () extends Migration {
             $table->dateTime('end_datetime');
             $table->string('client_name')->nullable();
             $table->string('client_phone')->nullable();
+            $table->integer('status');
             $table->timestamps();
         });
     }
