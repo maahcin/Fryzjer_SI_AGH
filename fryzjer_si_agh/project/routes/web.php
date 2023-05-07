@@ -72,3 +72,4 @@ Route::get('/products/cost', [\App\Http\Controllers\ProductController::class, 'c
 Route::get('/delraport', [\App\Http\Controllers\DeliveryController::class, 'raport'])->name('delivery.raport'); //pz
 Route::get('/products/pdf', [\App\Http\Controllers\ProductController::class, 'cost']);
 
+Route::resource('/services', \App\Http\Controllers\ServiceController::class)->middleware(['auth']);

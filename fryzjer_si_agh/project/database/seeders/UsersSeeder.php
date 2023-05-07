@@ -27,7 +27,7 @@ class UsersSeeder extends Seeder
             'password' => bcrypt('secret'),
             'type' => 2,
             'phone' => '123456789',
-            'speciality' => 'Strzyzenie męskie + broda, Koloryzacja',
+            'speciality' => 'Strzyzenie meskie + broda, Koloryzacja',
 
         ]);
         DB::table('users')->insert([  //KSIĘGOWA

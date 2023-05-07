@@ -21,12 +21,12 @@ class ServiceSeeder extends Seeder
             'cost' => 50.00,
         ]);
         DB::table('services')->insert([
-            'name' => 'Strzyzenie damskie krótkie',
+            'name' => 'Strzyzenie damskie krotkie',
             'est_time_min' => 60,
             'cost' => 80.00,
         ]);
         DB::table('services')->insert([
-            'name' => 'Strzyzenie damskie długie',
+            'name' => 'Strzyzenie damskie dlugie',
             'est_time_min' => 60,
             'cost' => 90.00,
         ]);
@@ -41,7 +41,7 @@ class ServiceSeeder extends Seeder
             'cost' => 200.00,
         ]);
         DB::table('services')->insert([
-            'name' => 'Koloryzacja + strzyżenie',   //ADMIN
+            'name' => 'Koloryzacja + strzyzenie',   //ADMIN
             'est_time_min' => 120,
             'cost' => 240.00,
         ]);
