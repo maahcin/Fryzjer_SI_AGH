@@ -95,7 +95,7 @@
                             </div>
                     @break
                     @case(3)
-
+{{--}}
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <x-nav-link :href="route('inventory.index')" :active="request()->routeIs('inventory.index')">
                                     {{ __('Inventory') }}
@@ -105,7 +105,7 @@
                                 <x-nav-link :href="route('product.show')" :active="request()->routeIs('products.index')">
                                     {{ __('Products') }}
                                 </x-nav-link>
-                            </div>
+                            </div> --}}
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <x-nav-link :href="route('product.cost')" :active="request()->routeIs('products.cost')">
                                     {{ __('Cost of Products') }}

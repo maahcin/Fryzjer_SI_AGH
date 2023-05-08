@@ -45,7 +45,7 @@
                                     </h3>
                                 </div>
                             </div>
-                        @elseif(!empty($sum) || $sum==0)
+                        @elseif(isset($sum))
                             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                                 <div class="px-4 py-5 sm:px-6 mt-4 mb-4">
                                     <h3 class="text-lg leading-6 font-medium text-gray-900">
