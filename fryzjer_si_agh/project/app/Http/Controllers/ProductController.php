@@ -53,6 +53,9 @@ class ProductController extends Controller
             case 'cal':
                 $sdate = $request->input('sdate');
                 $edate = $request->input('edate');
+                if($sdate>$edate){
+                    return view('products.cost')->with('err', "nieprawidłowy okres czasu, koniec musi być być później niż początek");
+                }
                 $request->request->remove('sdate');
                 $request->request->remove('edate');
                 if (empty($sdate)) {
@@ -69,6 +72,9 @@ class ProductController extends Controller
 
                 foreach ($sum as $ss) {
                     $s = $s + (int)$ss->sum;
+                }
+                if (empty($s)) {
+                    $s=0;
                 }
                 return view('products.cost')->with('sum', $s)->with('sdate', $sdate)->with('edate', $edate);
             case 'report':
